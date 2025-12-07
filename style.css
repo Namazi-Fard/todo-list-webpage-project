@@ -246,7 +246,7 @@ body.light .todos {
 }
 
 /* COMPLETED ITEM */
-
+/* set  style for completed item */
 .todos .card.checked .item {
   text-decoration: line-through;
   color: var(--clr-gb-3);
@@ -331,7 +331,7 @@ footer {
   height: 0;
   pointer-events: none;
 }
-
+/* taskes that is complete or checked are visible now */
 .todos.completed .card.checked {
   opacity: 1;
   padding: 1.9rem 2rem;
@@ -383,7 +383,7 @@ footer {
   opacity: 0.5;
 }
 
-
+/* set style and animation for taskes(ul-cards) that They will be erased,deleted. */
 .todos .card.fall {
   pointer-events: none;
   animation: fall 0.2s forwards;
