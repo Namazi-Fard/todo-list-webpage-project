@@ -78,6 +78,29 @@ function main() {
       addBtn.click();
     }
   });
+  filter.addEventListener("click", (e) => {
+    const id = e.target.id;
+    if (id) {
+      document.querySelector(".on").classList.remove("on");
+      document.getElementById(id).classList.add("on");
+      document.querySelector(".todos").className = `todos ${id}`;
+    }
+  });
+
+  btnFilter.addEventListener("click", () => {
+    var deleteIndexes = [];
+    document.querySelectorAll(".card.checked").forEach((card) => {
+      deleteIndexes.push(
+        [...document.querySelectorAll(".todos .card")].indexOf(card)
+      );
+      card.classList.add("fall");
+      card.addEventListener("animationend", () => {
+        card.remove();
+      });
+    });
+
+    removeMultipleTodos(deleteIndexes);
+  });
 }
 //start of makeTodoElement function -----------------------
 function makeTodoElement(todoArray) {
@@ -193,6 +216,14 @@ function makeTodoElement(todoArray) {
 function removeTodo(index) {
   const todos = JSON.parse(localStorage.getItem("todos"));
   todos.splice(index, 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+// start of removeMultipleTodos
+function removeMultipleTodos(indexes) {
+  var todos = JSON.parse(localStorage.getItem("todos"));
+  todos = todos.filter((todo, index) => {
+    return !indexes.includes(index);
+  });
   localStorage.setItem("todos", JSON.stringify(todos));
 }
 // start of stateTodo function --------------------------------
