@@ -83,7 +83,7 @@ function main() {
     if (id) {
       document.querySelector(".on").classList.remove("on");
       document.getElementById(id).classList.add("on");
-      document.querySelector(".todos").className = `todos ${id}`;
+      document.querySelector(".todos").classList = `todos ${id}`;
     }
   });
 
@@ -221,7 +221,7 @@ function removeTodo(index) {
 // start of removeMultipleTodos
 function removeMultipleTodos(indexes) {
   var todos = JSON.parse(localStorage.getItem("todos"));
-  todos = todos.filter((index) => {
+  todos = todos.filter((todo,index) => {
     return !indexes.includes(index);
   });
   localStorage.setItem("todos", JSON.stringify(todos));
