@@ -221,7 +221,7 @@ function removeTodo(index) {
 // start of removeMultipleTodos
 function removeMultipleTodos(indexes) {
   var todos = JSON.parse(localStorage.getItem("todos"));
-  todos = todos.filter((todo, index) => {
+  todos = todos.filter((index) => {
     return !indexes.includes(index);
   });
   localStorage.setItem("todos", JSON.stringify(todos));
